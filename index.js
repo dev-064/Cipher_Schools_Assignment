@@ -12,6 +12,7 @@ startdb()
 app.use(express.json())
 //routes
 app.use('/api/auth',require('./routes/Auth'))
+app.use('/api/UserInfo',require('./routes/UserInformation'))
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`)
