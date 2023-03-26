@@ -19,7 +19,7 @@ const UserSchema = new Schema({
     type: Date,
     default: Date.now,
   },
-  interests: [{ interest: { type: String } }],
+  interests: [{ type: String }],
   SocialMediaLinks: {
     facebook: String,
     Instagram: String,

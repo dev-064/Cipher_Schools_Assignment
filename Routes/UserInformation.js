@@ -124,16 +124,14 @@ Router.put(
     }
     try {
       let { Interests, email } = req.body;
-      console.log(typeof Interests);
-    //   res.send(Interests)
       let user = await User.findOne({ email });
       if (!user) {
         return res
           .status(400)
           .send({ error: "The User with this email Id does not exist" });
       } else {
-
-        // user.save();
+        user.interests=Interests;
+        user.save();
         console.log("Interests", Interests);
         res.send({
           message: "Interests of the user is successfully updated",
