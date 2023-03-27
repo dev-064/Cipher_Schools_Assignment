@@ -81,7 +81,11 @@ Router.put(
           user: user,
         });
       }
-    } catch (error) {}
+    } catch (error) {
+      res.send({
+        error: error.messge,
+      });
+    }
   }
 );
 Router.put(
@@ -113,7 +117,11 @@ Router.put(
           user: user,
         });
       }
-    } catch (error) {}
+    } catch (error) {
+      res.send({
+        error: error.messge,
+      });
+    }
   }
 );
 Router.put(
@@ -133,7 +141,7 @@ Router.put(
           .status(400)
           .send({ error: "The User with this email Id does not exist" });
       } else {
-        user.interests=Interests;
+        user.interests = Interests;
         user.save();
         console.log("Interests", Interests);
         res.send({
@@ -142,7 +150,9 @@ Router.put(
         });
       }
     } catch (error) {
-      
+      res.send({
+        error: error.messge,
+      });
     }
   }
 );
