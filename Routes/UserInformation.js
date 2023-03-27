@@ -148,5 +148,40 @@ Router.put(
     }
   }
 );
+Router.put(
+  "/Information",
+  fetchuser,
+  [
+    body("name", "Name length should be greater than 2").isLength({ min: 3 }),
+    body("Phone", "Phone Number be of 10 digits").isLength(10),
+    body("email", "Enter a valid Email").isEmail(),
+  ],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+    try {
+      let { name, Phone, email } = req.body;
+      console.log(name);
+      let user = await User.findOne({ email });
+      if (!user) {
+        return res
+          .status(400)
+          .send({ error: "The User with this email Id does not exist" });
+      } else {
+        user.name = name;
+        user.Phone = Phone;
+        user.save();
+        res.send({
+          message: "Information Of the User is successfully updated",
+          user: user,
+        });
+      }
+    } catch (error) {
+      res.status(500).send("Internal Server Error");
+    }
+  }
+);
 
 module.exports = Router;

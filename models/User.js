@@ -35,5 +35,8 @@ const UserSchema = new Schema({
     HighestEducation: String,
     CurrentlyStudying: String,
   },
+  Phone: {
+    type: String,
+  },
 });
 module.exports = mongoose.model("user", UserSchema);
