@@ -25,7 +25,7 @@ Router.post(
       if (user) {
         return res
           .status(400)
-          .error({ error: "user with this email already exist" });
+          .send({ error: "sorry user with this email already exist" });
       }
       const salt = await bcrypt.genSalt(10);
       const hash = await bcrypt.hash(password, salt);
@@ -42,7 +42,7 @@ Router.post(
         user: user,
       });
     } catch (error) {
-      res.status(500).error("Internal server Error");
+      res.status(500).send("Internal server Error");
     }
   }
 );
@@ -65,13 +65,13 @@ Router.post(
       if (!user) {
         return res
           .status(400)
-          .error({ error: "login with correct credentials" });
+          .send({ error: "login with correct credentials" });
       }
       const passcheck = await bcrypt.compare(password, user.password);
       if (!passcheck) {
         return res
           .status(400)
-          .error({ error: "login with correct credentials" });
+          .send({ error: "login with correct credentials" });
       }
       const data = {
         id: user.id,
@@ -84,7 +84,7 @@ Router.post(
         user: user,
       });
     } catch (error) {
-      res.status(500).error("Internal server Error");
+      res.status(500).send("Internal server Error");
     }
   }
 );
@@ -110,11 +110,11 @@ Router.put(
       if (!user) {
         return res
           .status(400)
-          .error({ error: "login with correct credentials" });
+          .send({ error: "login with correct credentials" });
       }
       const passcheck = await bcrypt.compare(OldPassword, user.password);
       if (!passcheck) {
-        return res.status(400).error({ error: "OldPassword does not matched" });
+        return res.status(400).send({ error: "OldPassword does not matched" });
       }
       const salt = await bcrypt.genSalt(10);
       const hash = await bcrypt.hash(NewPassword, salt);
@@ -125,7 +125,7 @@ Router.put(
         user: user,
       });
     } catch (error) {
-      res.status(500).error("Internal server Error");
+      res.status(500).send("Internal server Error");
     }
   }
 );

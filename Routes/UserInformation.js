@@ -27,7 +27,7 @@ Router.put(
       if (!user) {
         return res
           .status(400)
-          .error({ error: "The User with this email Id does not exist" });
+          .send({ error: "The User with this email Id does not exist" });
       } else {
         user.Description = Description;
         user.save();
@@ -37,7 +37,7 @@ Router.put(
         });
       }
     } catch (error) {
-      res.error({
+      res.send({
         error: error.messge,
       });
     }
@@ -66,7 +66,7 @@ Router.put(
       if (!user) {
         return res
           .status(400)
-          .error({ error: "The User with this email Id does not exist" });
+          .send({ error: "The User with this email Id does not exist" });
       } else {
         user.SocialMediaLinks.facebook = facebook;
         user.SocialMediaLinks.Instagram = Instagram;
@@ -80,9 +80,7 @@ Router.put(
           user: user,
         });
       }
-    } catch (error) {
-      res.error("Internal Server Error");
-    }
+    } catch (error) {}
   }
 );
 Router.put(
@@ -103,7 +101,7 @@ Router.put(
       if (!user) {
         return res
           .status(400)
-          .error({ error: "The User with this email Id does not exist" });
+          .send({ error: "The User with this email Id does not exist" });
       } else {
         user.PersonalInformation.HighestEducation = HighestEducation;
         user.PersonalInformation.CurrentlyStudying = CurrentlyStudying;
@@ -113,9 +111,7 @@ Router.put(
           user: user,
         });
       }
-    } catch (error) {
-      res.error("Internal Server Error");
-    }
+    } catch (error) {}
   }
 );
 Router.put(
@@ -132,9 +128,9 @@ Router.put(
       if (!user) {
         return res
           .status(400)
-          .error({ error: "The User with this email Id does not exist" });
+          .send({ error: "The User with this email Id does not exist" });
       } else {
-        user.interests = Interests;
+        user.interests=Interests;
         user.save();
         console.log("Interests", Interests);
         res.send({
@@ -143,7 +139,7 @@ Router.put(
         });
       }
     } catch (error) {
-      res.error("Internal Server Error");
+      
     }
   }
 );
