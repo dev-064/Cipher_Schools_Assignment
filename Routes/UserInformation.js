@@ -37,9 +37,7 @@ Router.put(
         });
       }
     } catch (error) {
-      res.send({
-        error: error.messge,
-      });
+      res.status(500).send("Internal Server Error");
     }
   }
 );
@@ -82,9 +80,7 @@ Router.put(
         });
       }
     } catch (error) {
-      res.send({
-        error: error.messge,
-      });
+      res.status(500).send("Internal Server Error");
     }
   }
 );
@@ -118,9 +114,7 @@ Router.put(
         });
       }
     } catch (error) {
-      res.send({
-        error: error.messge,
-      });
+      res.status(500).send("Internal Server Error");
     }
   }
 );
@@ -150,9 +144,7 @@ Router.put(
         });
       }
     } catch (error) {
-      res.send({
-        error: error.messge,
-      });
+      res.status(500).send("Internal Server Error");
     }
   }
 );
