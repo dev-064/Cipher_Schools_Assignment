@@ -138,7 +138,9 @@ Router.put(
           user: user,
         });
       }
-    } catch (error) {}
+    } catch (error) {
+      
+    }
   }
 );
 
