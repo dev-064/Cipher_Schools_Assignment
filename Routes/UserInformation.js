@@ -45,6 +45,7 @@ Router.put(
 );
 Router.put(
   "/SocialMedialinks",
+  fetchuser,
   [
     body("email", "enter a valid email").isEmail(),
     body("facebook", "Enter a Valid Url"),
@@ -85,6 +86,7 @@ Router.put(
 );
 Router.put(
   "/PersonalInformation",
+  fetchuser,
   [
     body("email", "enter a valid email").isEmail(),
     body("HighestEducation"),
@@ -116,6 +118,7 @@ Router.put(
 );
 Router.put(
   "/Interests",
+  fetchuser,
   [body("email", "enter a valid email").isEmail()],
   async (req, res) => {
     const errors = validationResult(req);

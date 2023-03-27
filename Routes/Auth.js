@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt");
 var jwt = require("jsonwebtoken");
 const Router = express.Router();
 const { body, validationResult } = require("express-validator");
+const fetchuser = require("../middlewares/fetchuser");
 const JWT = "Login@userToken";
 
 //creating user
@@ -90,6 +91,7 @@ Router.post(
 );
 Router.put(
   "/UpdatePassword",
+  fetchuser,
   [
     body("email", "enter valid email").isEmail(),
     body("OldPassword", "password length be atleast 8 character").isLength({
