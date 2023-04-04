@@ -1,6 +1,6 @@
 const User = require("../models/User");
 const express = require("express");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 var jwt = require("jsonwebtoken");
 const Router = express.Router();
 const { body, validationResult } = require("express-validator");
